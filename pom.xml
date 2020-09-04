@@ -90,7 +90,9 @@
                 </executions>
                 <configuration>
                     <sources>
-                        <source>${project.basedir}/src/main/resources/movies.xsd</source>
+<!--                        <source>${project.basedir}/src/main/resources/xsd/movies.xsd</source>-->
+<!--                        <source>${project.basedir}/src/main/resources/xsd/employee.xsd</source>-->
+                        <source>${project.basedir}/src/main/resources/xsd/soap-ws.xsd</source>
                     </sources>
                     <packageName>az.maqa.spring.gs_ws</packageName>
                     <clearOutputDir>false</clearOutputDir>

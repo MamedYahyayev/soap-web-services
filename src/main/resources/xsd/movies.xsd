@@ -3,6 +3,7 @@
            targetNamespace="http://www.example.com/movies-ws"
            elementFormDefault="qualified">
 
+
     <xs:element name="getMovieByIdRequest">
         <xs:complexType>
             <xs:sequence>
@@ -15,28 +16,28 @@
     <xs:element name="getMovieByIdResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="movieType" type="tns:movieType" />
+                <xs:element name="movieType" type="tns:movieType"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
     <xs:complexType name="movieType">
         <xs:sequence>
-            <xs:element name="movieId" type="xs:long" />
-            <xs:element name="title" type="xs:string" />
-            <xs:element name="category" type="xs:string" />
+            <xs:element name="movieId" type="xs:long"/>
+            <xs:element name="title" type="xs:string"/>
+            <xs:element name="category" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
 
 
     <xs:element name="getAllMoviesRequest">
-        <xs:complexType />
+        <xs:complexType/>
     </xs:element>
-    
+
     <xs:element name="getAllMoviesResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="movieType" type="tns:movieType" maxOccurs="unbounded" />
+                <xs:element name="movieType" type="tns:movieType" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

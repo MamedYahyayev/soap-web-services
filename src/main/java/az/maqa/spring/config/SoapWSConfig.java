@@ -1,6 +1,5 @@
 package az.maqa.spring.config;
 
-import az.maqa.spring.endpoint.MovieEndpoint;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -16,9 +15,10 @@ import org.springframework.xml.xsd.XsdSchema;
 @EnableWs
 @Configuration
 public class SoapWSConfig extends WsConfigurerAdapter {
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+
+    @SuppressWarnings({"rawtypes", "unchecked"})
     @Bean
-    public ServletRegistrationBean messageDispatcherServlet(ApplicationContext appContext){
+    public ServletRegistrationBean messageDispatcherServlet(ApplicationContext appContext) {
         MessageDispatcherServlet servlet = new MessageDispatcherServlet();
         servlet.setApplicationContext(appContext);
         servlet.setTransformWsdlLocations(true);
@@ -26,18 +26,34 @@ public class SoapWSConfig extends WsConfigurerAdapter {
     }
 
 
-    @Bean(name = "movies")
-    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema schema){
+    @Bean(name = "soap-ws")
+    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema schema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-        wsdl11Definition.setPortTypeName("MoviesPort");
+        wsdl11Definition.setPortTypeName("SoapWsPort");
         wsdl11Definition.setLocationUri("/ws");
-        wsdl11Definition.setTargetNamespace(MovieEndpoint.NAMESPACE_URI);
+        wsdl11Definition.setTargetNamespace("http://www.example.com/soap-ws");
         wsdl11Definition.setSchema(schema);
         return wsdl11Definition;
     }
 
     @Bean
-    public XsdSchema moviesSchema(){
-        return new SimpleXsdSchema(new ClassPathResource("/movies.xsd"));
+    public XsdSchema schema() {
+        return new SimpleXsdSchema(new ClassPathResource("/xsd/soap-ws.xsd"));
     }
+
+
+//    @Bean(name = "employee")
+//    public DefaultWsdl11Definition defaultWsdl11DefinitionEmployee(XsdSchema schemaEmployee){
+//        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+//        wsdl11Definition.setPortTypeName("EmployeePort");
+//        wsdl11Definition.setLocationUri("/ws");
+//        wsdl11Definition.setTargetNamespace(EmployeeEndpoint.NAMESPACE_URI);
+//        wsdl11Definition.setSchema(schemaEmployee);
+//        return wsdl11Definition;
+//    }
+//
+//    @Bean
+//    public XsdSchema schemaEmployee(){
+//        return new SimpleXsdSchema(new ClassPathResource("/xsd/employee.xsd"));
+//    }
 }

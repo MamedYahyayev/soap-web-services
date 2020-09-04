@@ -17,7 +17,7 @@ import java.util.List;
 @Endpoint
 @NoArgsConstructor
 public class MovieEndpoint {
-    public static final String NAMESPACE_URI = "http://www.example.com/movies-ws";
+    public static final String NAMESPACE_URI = "http://www.example.com/soap-ws";
 
     @Autowired
     private MovieService service;
