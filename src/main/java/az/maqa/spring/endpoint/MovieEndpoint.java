@@ -26,29 +26,13 @@ public class MovieEndpoint {
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getMovieByIdRequest")
     @ResponsePayload
     public GetMovieByIdResponse getMovieById(@RequestPayload GetMovieByIdRequest request) {
-        GetMovieByIdResponse response = new GetMovieByIdResponse();
-        Movie movieEntity = service.getEntityById(request.getMovieId());
-        MovieType movieType = new MovieType();
-        BeanUtils.copyProperties(movieEntity, movieType);
-        response.setMovieType(movieType);
-        return response;
+        return service.getEntityById(request.getMovieId());
     }
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllMoviesRequest")
     @ResponsePayload
     public GetAllMoviesResponse getAllMovies(@RequestPayload GetAllMoviesRequest request) {
-        GetAllMoviesResponse response = new GetAllMoviesResponse();
-        List<MovieType> movieTypeList = new ArrayList<MovieType>();
-        List<Movie> movieEntityList = service.getAllEntities();
-        for (Movie entity : movieEntityList) {
-            MovieType movieType = new MovieType();
-            BeanUtils.copyProperties(entity, movieType);
-            movieTypeList.add(movieType);
-        }
-        response.getMovieType().addAll(movieTypeList);
-
-        return response;
-
+        return service.getAllEntities();
     }
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "addMovieRequest")
@@ -62,12 +46,12 @@ public class MovieEndpoint {
         Movie savedMovieEntity = service.addEntity(newMovieEntity);
 
         if (savedMovieEntity == null) {
-            serviceStatus.setStatusCode("CONFLICT");
+            serviceStatus.setStatusCode(103);
             serviceStatus.setMessage("Exception while adding Entity");
         } else {
 
             BeanUtils.copyProperties(savedMovieEntity, newMovieType);
-            serviceStatus.setStatusCode("SUCCESS");
+            serviceStatus.setStatusCode(104);
             serviceStatus.setMessage("Content Added Successfully");
         }
 
@@ -86,7 +70,7 @@ public class MovieEndpoint {
         Movie movieFromDB = service.getEntityByTitle(request.getTitle());
 
         if (movieFromDB == null) {
-            serviceStatus.setStatusCode("NOT FOUND");
+            serviceStatus.setStatusCode(101);
             serviceStatus.setMessage("Movie = " + request.getTitle() + " not found");
         } else {
 
@@ -99,11 +83,11 @@ public class MovieEndpoint {
             boolean flag = service.updateEntity(movieFromDB);
 
             if (flag == false) {
-                serviceStatus.setStatusCode("CONFLICT");
+                serviceStatus.setStatusCode(103);
                 serviceStatus.setMessage("Exception while updating Entity=" + request.getTitle());
                 ;
             } else {
-                serviceStatus.setStatusCode("SUCCESS");
+                serviceStatus.setStatusCode(1);
                 serviceStatus.setMessage("Content updated Successfully");
             }
 
@@ -123,10 +107,10 @@ public class MovieEndpoint {
         boolean flag = service.deleteEntityById(request.getMovieId());
 
         if (flag == false) {
-            serviceStatus.setStatusCode("FAIL");
+            serviceStatus.setStatusCode(105);
             serviceStatus.setMessage("Exception while deletint Entity id=" + request.getMovieId());
         } else {
-            serviceStatus.setStatusCode("SUCCESS");
+            serviceStatus.setStatusCode(1);
             serviceStatus.setMessage("Content Deleted Successfully");
         }
 

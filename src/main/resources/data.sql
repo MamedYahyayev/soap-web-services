@@ -1,49 +1,49 @@
-insert into movies(title , category)
-values('a','v');
-
-insert into movies(title , category)
-values('a','v');
-
-insert into movies(title , category)
-values('a','v');
-
-
-insert into movies(title , category)
-values('a','v');
-
-
-insert into movies(title , category)
-values('a','v');
-
-
-
-insert into movies(title , category)
-values('a','v');
-
-
-
-insert into movies(title , category)
-values('a','v');
-
-
-
-insert into movies(title , category)
-values('a','v');
-
-
-
-insert into movies(title , category)
-values('a','v');
-
-
-insert into movies(title , category)
-values('a','v');
-
-insert into movies(title , category)
-values('a','v');
-
-insert into movies(title , category)
-values('a','v');
+-- insert into movies(title , category)
+-- values('a','v');
+--
+-- insert into movies(title , category)
+-- values('a','v');
+--
+-- insert into movies(title , category)
+-- values('a','v');
+--
+--
+-- insert into movies(title , category)
+-- values('a','v');
+--
+--
+-- insert into movies(title , category)
+-- values('a','v');
+--
+--
+--
+-- insert into movies(title , category)
+-- values('a','v');
+--
+--
+--
+-- insert into movies(title , category)
+-- values('a','v');
+--
+--
+--
+-- insert into movies(title , category)
+-- values('a','v');
+--
+--
+--
+-- insert into movies(title , category)
+-- values('a','v');
+--
+--
+-- insert into movies(title , category)
+-- values('a','v');
+--
+-- insert into movies(title , category)
+-- values('a','v');
+--
+-- insert into movies(title , category)
+-- values('a','v');
 
 
 insert into employee(name , surname , age , experience , job , active)

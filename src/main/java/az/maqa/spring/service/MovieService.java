@@ -1,16 +1,18 @@
 package az.maqa.spring.service;
 
 import az.maqa.spring.entity.Movie;
+import az.maqa.spring.gs_ws.GetAllMoviesResponse;
+import az.maqa.spring.gs_ws.GetMovieByIdResponse;
 
 import java.util.List;
 
 public interface MovieService {
 
-    Movie getEntityById(long id);
+    GetMovieByIdResponse getEntityById(long id);
 
     Movie getEntityByTitle(String title);
 
-    List<Movie> getAllEntities();
+    GetAllMoviesResponse getAllEntities();
 
     Movie addEntity(Movie entity);
 

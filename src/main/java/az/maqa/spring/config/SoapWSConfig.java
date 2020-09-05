@@ -12,6 +12,7 @@ import org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition;
 import org.springframework.xml.xsd.SimpleXsdSchema;
 import org.springframework.xml.xsd.XsdSchema;
 
+
 @EnableWs
 @Configuration
 public class SoapWSConfig extends WsConfigurerAdapter {
@@ -42,18 +43,4 @@ public class SoapWSConfig extends WsConfigurerAdapter {
     }
 
 
-//    @Bean(name = "employee")
-//    public DefaultWsdl11Definition defaultWsdl11DefinitionEmployee(XsdSchema schemaEmployee){
-//        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-//        wsdl11Definition.setPortTypeName("EmployeePort");
-//        wsdl11Definition.setLocationUri("/ws");
-//        wsdl11Definition.setTargetNamespace(EmployeeEndpoint.NAMESPACE_URI);
-//        wsdl11Definition.setSchema(schemaEmployee);
-//        return wsdl11Definition;
-//    }
-//
-//    @Bean
-//    public XsdSchema schemaEmployee(){
-//        return new SimpleXsdSchema(new ClassPathResource("/xsd/employee.xsd"));
-//    }
 }
