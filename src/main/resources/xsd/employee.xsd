@@ -1,0 +1,54 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://www.example.com/employee-ws"
+           targetNamespace="http://www.example.com/employee-ws"
+           elementFormDefault="qualified">
+
+    <xs:element name="GetEmployeeByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="GetEmployeeByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="employeeType" type="tns:employeeType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="employeeType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="surname" type="xs:string"/>
+            <xs:element name="age" type="xs:integer"/>
+            <xs:element name="experience" type="xs:integer"/>
+            <xs:element name="job" type="xs:string"/>
+            <xs:element name="active" type="xs:integer"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:element name="GetAllEmployeesRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="active" type="xs:integer"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="GetAllEmployeeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="employeeType" type="tns:employeeType" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+
+
+</xs:schema>
